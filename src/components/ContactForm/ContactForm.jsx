@@ -26,8 +26,8 @@ export default function ContactForm({ onSubmit }) {
         'Name can only contain letters and spaces',
         true
       )
-      .min(5, 'Name must be at least 5 characters long')
-      .max(20, 'Name must be 20 characters or less')
+      .min(3, 'Name must be at least 5 characters long')
+      .max(50, 'Name must be 20 characters or less')
       .required('Required'),
     number: Yup.string()
       .transform(value => {
@@ -38,7 +38,8 @@ export default function ContactForm({ onSubmit }) {
         'Phone number can contain only numbers, white space and "-"',
         true
       )
-      .length(7, 'Phone number must have 7 digits')
+      .min(3, 'Name must be at least 5 characters long')
+      .max(50, 'Name must be 20 characters or less')
       .required('Required'),
   });
   return (

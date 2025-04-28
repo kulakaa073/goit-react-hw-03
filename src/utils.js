@@ -7,5 +7,5 @@ export function formatPhoneNumber(number) {
 }
 
 export function normalizePhoneNumber(number) {
-  return number.replace(/[\s-]+/g, '');
+  return number.replace(/[+\s()-]+/g, '');
 }
