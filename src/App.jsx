@@ -5,10 +5,17 @@ import ContactList from './components/ContactList/ContactList';
 
 import initContacts from './contacts.json';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [contacts, setContacts] = useState(initContacts);
+  const [contacts, setContacts] = useState(() => {
+    const savedObject = window.localStorage.getItem('contactList');
+    if (savedObject !== null) {
+      return JSON.parse(savedObject);
+    }
+    return initContacts;
+  });
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const addContact = newContact => {
@@ -24,6 +31,10 @@ function App() {
   const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  useEffect(() => {
+    window.localStorage.setItem('contactList', JSON.stringify(contacts));
+  }, [contacts]);
 
   return (
     <>
