@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import { formatPhoneNumber, normalizePhoneNumber } from '../../utils.js';
 import { useId } from 'react';
 
+import css from './ContactForm.module.css';
+
 export default function ContactForm({ onSubmit }) {
   const nameFieldId = useId();
   const numberFieldId = useId();
@@ -45,14 +47,28 @@ export default function ContactForm({ onSubmit }) {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      <Form>
-        <label htmlFor={nameFieldId}>Name</label>
-        <Field id={nameFieldId} name="name" required />
-        <ErrorMessage name="name" component="span" />
-        <label htmlFor={numberFieldId}>Number</label>
-        <Field id={numberFieldId} name="number" required />
-        <ErrorMessage name="number" component="span" />
-        <button type="submit">Add Contact</button>
+      <Form className={css.container}>
+        <div className={css.fieldWrap}>
+          <label htmlFor={nameFieldId}>Name</label>
+          <Field id={nameFieldId} name="name" required />
+          <ErrorMessage
+            name="name"
+            component="span"
+            className={css.errorMessage}
+          />
+        </div>
+        <div className={css.fieldWrap}>
+          <label htmlFor={numberFieldId}>Number</label>
+          <Field id={numberFieldId} name="number" required />
+          <ErrorMessage
+            name="number"
+            component="span"
+            className={css.errorMessage}
+          />
+        </div>
+        <button type="submit" className={css.button}>
+          Add Contact
+        </button>
       </Form>
     </Formik>
   );
