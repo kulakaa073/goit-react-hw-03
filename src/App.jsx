@@ -1,6 +1,6 @@
 import './App.css';
 import ContactForm from './components/ContactForm/ContactForm';
-import SearchBox from './components/SearchBox/SearchBox';
+import SearchBox from './components/SearchBox/SearchBox.jsx';
 import ContactList from './components/ContactList/ContactList';
 
 import initContacts from './contacts.json';
